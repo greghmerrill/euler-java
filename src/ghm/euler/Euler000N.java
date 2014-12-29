@@ -1,5 +1,6 @@
 package ghm.euler;
 
+import ghm.euler.EulerSolution;
 import java.util.Optional;
 
 public class Euler000N extends EulerSolution<Integer> {
