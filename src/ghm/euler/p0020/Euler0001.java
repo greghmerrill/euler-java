@@ -1,4 +1,6 @@
-package ghm.euler;
+package ghm.euler.p0020;
+
+import ghm.euler.EulerSolution;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
