@@ -40,7 +40,9 @@ public class Euler0005 extends EulerSolution<Integer> {
       });
     });
 
-    return countByPrime.entrySet().stream().map(e -> (int) Math.pow(e.getKey(), e.getValue())).reduce(1, (acc, i) -> acc * i);
+    return countByPrime.entrySet().stream()
+      .map(e -> (int) Math.pow(e.getKey(), e.getValue()))
+      .reduce(1, (acc, i) -> acc * i);
   }
 
   @Override
