@@ -4,19 +4,24 @@ import java.util.Optional;
 
 public abstract class EulerSolution<S> {
 
-  public abstract S solve();
+  public abstract S solve() throws Exception;
 
   public Optional<S> expect() {
     return Optional.empty();
   }
 
   public void run() {
-    long start = System.currentTimeMillis();
-    S answer = solve();
-    long end = System.currentTimeMillis();
+    try {
+      long start = System.currentTimeMillis();
+      S answer = solve();
+      long end = System.currentTimeMillis();
 
-    System.out.println("Answer: " + answer + "  " + validate(answer));
-    System.out.println(String.format("Time elapsed: %.2fs", 1.0 * (end - start) / 1000.0));
+      System.out.println("Answer: " + answer + "  " + validate(answer));
+      System.out.println(String.format("Time elapsed: %.2fs", 1.0 * (end - start) / 1000.0));
+    }
+    catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private String validate(S answer) {
