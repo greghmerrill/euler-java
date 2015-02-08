@@ -43,4 +43,33 @@ public class Range {
     return StreamSupport.intStream(spliterator, false);
   }
 
+  /**
+   * Creates a new, unbounded range as an IntStream.  Examples:
+   * 
+   * (0, 1) = [0, 1, 2, 3, ...]
+   * (10, -5) = [10, 5, 0, -5, ...]
+   * 
+   * @param startInclusive start value of the range, inclusive
+   * @param step step function - may be positive or negative
+   * @return range as IntStream
+   */
+  public static IntStream unbounded(int startInclusive, int step) {
+    Spliterator.OfInt spliterator = Spliterators.spliteratorUnknownSize(new PrimitiveIterator.OfInt() {
+      private int next = startInclusive;
+
+      @Override
+      public int nextInt() {
+        int val = next;
+        next = next + step;
+        return val;
+      }
+
+      @Override
+      public boolean hasNext() {
+        return true;
+      }
+    }, 0);
+    return StreamSupport.intStream(spliterator, false);
+  }
+
 }
